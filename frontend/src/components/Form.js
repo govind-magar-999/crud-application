@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const BASE_URL = "https://crud-application-kappa.vercel.app"
+const BASE_URL = "https://crud-application-fawn.vercel.app"
 
 export const Form = () => {
   // To Store the value from Frontend
