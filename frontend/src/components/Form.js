@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+const BASE_URL = "https://crud-application-production.up.railway.app"
+
 export const Form = () => {
   // To Store the value from Frontend
   const [userName, setUserName] = useState("");
@@ -15,7 +17,7 @@ export const Form = () => {
       name: userName,
       email: userEmail,
     };
-    const res = await axios.post("/createUser", data);
+    const res = await axios.post(`${BASE_URL}/createUser`, data);
     console.log(res);
     
     if (res.data.success) {
