@@ -39,7 +39,7 @@ export const UserList = () => {
       
       if (resp.data.success) {
         toast.success("User edited successfully");
-        fetchUsersData();
+        fetchUserData();
       }
     }
   } catch (error) {
@@ -54,7 +54,7 @@ export const UserList = () => {
     const resp = await axios.delete(`${BASE_URL}/deleteUser/${userId}`);
     if (resp.data.success) {
       toast.success("User deleted successfully");
-      fetchUsersData();
+      fetchUserData();
       console.log(resp);
     }
 

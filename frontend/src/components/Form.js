@@ -22,7 +22,6 @@ export const Form = () => {
     
     if (res.data.success) {
       toast.success("User created successfully");
-      fetchUsersData();
     }
   } catch (error) {
     toast.error(error.response.data.message);
