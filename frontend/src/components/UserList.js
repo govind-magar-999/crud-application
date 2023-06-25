@@ -11,10 +11,8 @@ export const UserList = () => {
     const resp = await axios.get(`${BASE_URL}/getUser`);
     console.log(resp);
 
-    // If no users, please dont set the values
-    if(resp.data.users.length > 0) {
       setUserData(resp.data.users);
-    }
+  
   };
 
   useEffect(()=>{
