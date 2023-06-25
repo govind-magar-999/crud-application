@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const BASE_URL = "https://crud-application-production.up.railway.app"
 
@@ -22,26 +23,44 @@ export const UserList = () => {
 
   // To Edit a user
   const handleEdit = async (user) => {
+    try {
     const userName = prompt("Enter your new name");
     const userEmail = prompt("Enter your new email");
 
     if(!userName || !userEmail) {
-      alert("Please Enter Name and Email");
+      toast.error("Please enter both name and email");
     }
     else {
-      const resp = await axios.put(`editUser/${user._id}`,{
+      const resp = await axios.put(`${BASE_URL}/editUser/${user._id}`,{
         name: userName,
         email: userEmail,
       });
       console.log(resp);
+      
+      if (resp.data.success) {
+        toast.success("User edited successfully");
+        fetchUsersData();
+      }
     }
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
   };
 
   // Delete a user
 
   const handleDelete = async (userId) => {
-    const resp = await axios.delete(`/deleteUser/${userId}`);
-    console.log(resp);
+    try {
+    const resp = await axios.delete(`${BASE_URL}/deleteUser/${userId}`);
+    if (resp.data.success) {
+      toast.success("User deleted successfully");
+      fetchUsersData();
+      console.log(resp);
+    }
+
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   }
 
   return (

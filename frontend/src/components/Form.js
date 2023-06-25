@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const Form = () => {
   // To Store the value from Frontend
@@ -9,12 +10,21 @@ export const Form = () => {
 
   // Function to send the Data
   const submitData = async () => {
+    try {
     const data = {
       name: userName,
       email: userEmail,
     };
     const res = await axios.post("/createUser", data);
     console.log(res);
+    
+    if (res.data.success) {
+      toast.success("User created successfully");
+      fetchUsersData();
+    }
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
   };
   // To handle the Default
   const handleSubmit = (event) => {
