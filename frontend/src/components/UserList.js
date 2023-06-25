@@ -8,7 +8,7 @@ export const UserList = () => {
   const [userData, setUserData] = useState("");
 
   const fetchUserData = async () => {
-    const resp = await axios.get(`${BASE_URL}/getUser`);
+    const resp = await axios.get(`${BASE_URL}/getUsers`);
     console.log(resp);
 
       setUserData(resp.data.users);
