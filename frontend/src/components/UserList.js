@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const BASE_URL = "https://crud-application-fawn.vercel.app"
+const BASE_URL = "https://crud-application-production.up.railway.app"
 
 export const UserList = () => {
   const [userData, setUserData] = useState("");
